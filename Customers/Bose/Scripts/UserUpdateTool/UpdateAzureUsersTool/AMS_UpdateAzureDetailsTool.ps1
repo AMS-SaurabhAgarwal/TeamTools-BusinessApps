@@ -87,7 +87,7 @@ function Get-CurrentUserAttributes {
         # Attempt to get the manager details
         if(-not ($currentUser.JobTitle.ToLower() -match "chief executive officer"))
         {
-            $managerObject = Get-MgUserManager -UserId $userPrincipalName -ErrorAction Stop
+            $managerObject = Get-MgUserManager -UserId $userPrincipalName -ErrorAction SilentlyContinue
             if ($managerObject) {
                 
                 $currentManager = $managerObject.AdditionalProperties["mail"]
